@@ -12,8 +12,11 @@
 
 # misc
 .DS_Store
-.idea/
 
 # umi
 .umi
 .umi-production
+
+# idea
+.idea 
+*.iml
