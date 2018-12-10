@@ -7,7 +7,7 @@ export default {
         bpid: '1',
         icon: 'dashboard',
         name: '文章管理',
-        route: '/articles',
+
       },
       {
         id: '22',
@@ -29,24 +29,9 @@ export default {
         mpid: '4',
         name: '广告列表',
         icon: 'heart-o',
-        route: '/UIElement/iconfont',
+        route: '/banners',
       },
-      {
-        id: '42',
-        bpid: '4',
-        mpid: '4',
-        name: 'DataTable',
-        icon: 'database',
-        route: '/UIElement/dataTable',
-      },
-      {
-        id: '43',
-        bpid: '4',
-        mpid: '4',
-        name: 'DropOption',
-        icon: 'bars',
-        route: '/UIElement/dropOption',
-      },
+
       {
         id: '5',
         bpid: '1',

@@ -29,6 +29,13 @@ var data = Mock.mock({
       "340000": "安徽省"
     },
   }]
+});
+var banner = Mock.mock({
+  'list|30-100': [{
+    'id|+1': 1,
+    "name":"@ctitle",
+    "img":Random.image('200x100', '#FF6600'),
+  }]
 })
 
 export default {
@@ -73,6 +80,12 @@ export default {
    // res.status(200).end()
     res.status(200).json({
       data: newData[0],
+
+    })
+  },
+  [`GET /api/banners`](req,res){
+    res.status(200).json({
+      data:banner,
 
     })
   },

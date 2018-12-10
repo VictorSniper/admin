@@ -1,5 +1,5 @@
 /**
- * title: 列表
+ * title: 文章列表
  */
 import {  Card, Col, Row,Table,Divider,Popconfirm ,Tag  } from 'antd';
 import Link from 'umi/link';
