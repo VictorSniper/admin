@@ -90,9 +90,10 @@ body {
 .ant-advanced-search-form {
   padding: 24px;
   background: white;
-  border-bottom: 1px solid #f0f2f5;
+  /*border-bottom: 1px solid #f0f2f5;*/
   /*border: 1px solid #d9d9d9;*/
   /*border-radius: 6px;*/
+  padding-bottom: 0;
 }
 .ant-pagination.ant-table-pagination{
 text-align: center;
@@ -106,4 +107,7 @@ text-align: center;
 
 .ant-advanced-search-form .ant-form-item-control-wrapper {
   flex: 1;
+}
+.ant-table-wrapper{
+  margin-top: 20px;
 }

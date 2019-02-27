@@ -1,3 +1,4 @@
+import React from 'react';
 import { Form, Row, Col, Input, Button, Icon,Select,DatePicker } from 'antd';
 import router from 'umi/router';
 import lodash from 'lodash';
@@ -12,19 +13,19 @@ const koption=[
   },
   {
     key:2,
-    value:"css"
+    value:"收入"
   },
   {
     key:3,
-    value:"javascript"
+    value:"支出"
   },
   {
     key:4,
-    value:"react"
+    value:"借入"
   },
   {
     key:5,
-    value:"vue"
+    value:"借出"
   }
 ];
 
@@ -63,12 +64,10 @@ class SearchForm extends React.Component {
     const { expand } = this.state;
     this.setState({ expand: !expand });
   }
-  OptionList(koption){
+  optionList =(koption) => {
     const children = [];
     for (let j = 0; j <koption.length; j++){
-      children.push(
-      <Option key={koption[j].key} value={koption[j].value}>{koption[j].value}</Option>
-      )
+      children.push(<Option key={koption[j].key} value={koption[j].value}>{koption[j].value}</Option>)
     }
     return children
   }
@@ -88,7 +87,7 @@ class SearchForm extends React.Component {
                 }],
               })(
                 <Select   placeholder={arr[i].placeholder}  >
-                  {this.OptionList(koption)}
+                  {this.optionList(koption)}
                 </Select>
               )}
             </FormItem>

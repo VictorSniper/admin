@@ -14,8 +14,8 @@ export default {
     },
     value:{},
     config:[
-      {name:"keywords",label:"标题",placeholder:"请输入标题",required:false,type:"text",category:"Input",keywords:null},
-      {name:"category",label:"分类",placeholder:"请选择分类名称",required:true,message:"分类名称为必选项",type:"",category:"Select"},
+      {name:"keywords",label:"项目名称",placeholder:"请输入项目名称",required:false,type:"text",category:"Input",keywords:null},
+      {name:"category",label:"收支类型",placeholder:"请选择收支类型",required:true,message:"收支类型为必选项",type:"",category:"Select"},
       {name:"rangePicker",label:"日期",required:true,type:"array",message:"日期不能为空",category:"RangePicker"},
       {name:"field4",label:"数量",placeholder:"请输入产品数量",required:false,message:"产品数量为必填项",type:"text",category:"Input"},
       {name:"field5",label:"数量",placeholder:"请输入产品数量",required:false,message:"产品数量为必填项",type:"text",category:"Input"},

@@ -13,15 +13,14 @@ var data = Mock.mock({
     "description":"@cparagraph(2)",
     'category|1':
       [
-        "全部",
-        "css",
-        "javascript",
-        "react",
-        "vue",
+        "收入",
+        "支出",
+        "借出",
+        "借入",
 ],
     'name':'@cname',
     "datetime|1":'@datetime',
-    "number|1-100": 100,
+    "money|1-30000": 30000,
     "city|1": {
       "310000": "上海市",
       "320000": "江苏省",

@@ -1,22 +1,21 @@
 /**
- * title: 文章列表
+ * title: 收支管理
  */
 import {  Card, Col, Row,Table,Divider,Popconfirm ,Tag  } from 'antd';
 import Link from 'umi/link';
 import router from 'umi/router';
 import lodash from 'lodash';
 import { connect } from 'dva';
+import PageModal from '../../component/PageModal';
 import PageSearch from '../../component/PageSearch';
 import PageHeader from '../../component/PageHeader';
 import styles from './index.css';
 
  function Main(props) {
    let tableDataLoading=props.loading.effects['main/query'];
-
-
    const columns = [
      {
-       title:'标题',
+       title:'项目名称',
        dataIndex:'title',
        key:'title',
      },
@@ -25,36 +24,57 @@ import styles from './index.css';
        align:'center',
      dataIndex: 'name',
      key: 'name',
-   }
-     ,{
-       title:'描述',
-       dataIndex:"description",
-       key:"description",
-     },
-
+   },
      {
      title: '日期',
      dataIndex: 'datetime',
      key: 'datetime',
 
    }, {
-     title: '分类',
+     title: '收支类型',
        align:'center',
      dataIndex: 'category',
      key: 'category',
      render: (text,record) =>{
-       return(
-         <div>
-           <Tag>{text}</Tag>
-         </div>
-       )
+       console.log(record)
+       if(text==='借入'){
+         return(
+           <div>
+             <Tag  color="orange">{text}</Tag>
+           </div>
+         )
+       }else if(text==='借出'){
+         return(
+           <div>
+             <Tag  color="magenta">{text}</Tag>
+           </div>
+         )
+       }else if(text==='支出'){
+         return(
+           <div>
+             <Tag  color="red">{text}</Tag>
+           </div>
+         )
+       }else{
+         return(
+           <div>
+             <Tag  color="green">{text}</Tag>
+           </div>
+         )
+       }
+
      }
    }, {
-     title: '点赞数',
+     title: '金额',
        align:'center',
-     dataIndex: 'number',
-     key: 'number',
-   },
+     dataIndex: 'money',
+     key: 'money',
+       render: text => <div>￥{text}.00</div>,
+   },{
+       title:'备注',
+       dataIndex:"description",
+       key:"description",
+     },
      {
        title: "操作",
        key: "action",
@@ -100,14 +120,14 @@ import styles from './index.css';
        },
      });
    }
-
-
    return (
 
     <div style={{ padding: '20px'}}>
       <PageHeader title={props.route.title} />
       <PageSearch onChange={handleFormChange}   onHandleSearch={handleSearch} {...props.main.fields} path={props.route.path} config={props.main.config}  />
+
       <div style={{ padding: '24px',backgroundColor:"#fff" }}>
+        <PageModal name="新建" />
                {/*<pre className="language-bash">*/}
           {/*{JSON.stringify(props.main.fields, null, 2)}*/}
         {/*</pre>*/}

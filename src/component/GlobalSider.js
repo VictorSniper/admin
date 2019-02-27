@@ -54,7 +54,6 @@ function GlobalSider(props) {
           }else{
             window.sessionStorage.setItem('sub', JSON.stringify('1'))
           }
-
         }}
 
         style={{ height: '100%', borderRight: 0 }}

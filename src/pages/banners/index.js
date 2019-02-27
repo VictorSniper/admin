@@ -1,5 +1,5 @@
 /**
- * title: 广告列表
+ * title: 管理列表
  */
 import {  Card, Col, Row,Table,Divider,Popconfirm ,Tag  } from 'antd';
 
