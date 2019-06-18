@@ -1,7 +1,7 @@
 /**
  * title: 收支管理
  */
-import {  Card, Col, Row,Table,Divider,Popconfirm ,Tag  } from 'antd';
+import {  Card, Col, Row,Table,Divider,Popconfirm ,Tag,Alert  } from 'antd';
 import Link from 'umi/link';
 import router from 'umi/router';
 import lodash from 'lodash';
@@ -13,6 +13,7 @@ import styles from './index.css';
 
  function Main(props) {
    let tableDataLoading=props.loading.effects['main/query'];
+   console.log(props)
    const columns = [
      {
        title:'项目名称',
@@ -36,7 +37,6 @@ import styles from './index.css';
      dataIndex: 'category',
      key: 'category',
      render: (text,record) =>{
-       console.log(record)
        if(text==='借入'){
          return(
            <div>
@@ -64,8 +64,15 @@ import styles from './index.css';
        }
 
      }
-   }, {
-     title: '金额',
+   },
+     {
+       title:"项目类别",
+          align:'center',
+       dataIndex: 'itemCategory',
+       key: 'itemCategory',
+     },
+     {
+     title: '￥金额',
        align:'center',
      dataIndex: 'money',
      key: 'money',
@@ -119,6 +126,35 @@ import styles from './index.css';
          },
        },
      });
+
+   }
+   function showModal() {
+
+     props.dispatch({
+       type:'main/updateCreateState',
+       payload:{
+         visible: true,
+
+       }
+     });
+   }
+   function handleCancel(){
+     props.dispatch({
+       type:'main/updateCreateState',
+       payload:{
+         visible: false,
+       }
+     });
+   }
+   function handleCreate(v) {
+     props.dispatch({
+       type:'main/create',
+       payload:{
+         visible: false,
+         confirmLoading: false,
+       }
+     });
+     console.log(v)
    }
    return (
 
@@ -127,10 +163,11 @@ import styles from './index.css';
       <PageSearch onChange={handleFormChange}   onHandleSearch={handleSearch} {...props.main.fields} path={props.route.path} config={props.main.config}  />
 
       <div style={{ padding: '24px',backgroundColor:"#fff" }}>
-        <PageModal name="新建" />
+        <PageModal  onHandleCreate={handleCreate} showModal={showModal} onHandleCancel={handleCancel} formsConfig={props.main.formsConfig}  visible={props.main.visible}  confirmLoading={props.main.confirmLoading} name="新建" />
                {/*<pre className="language-bash">*/}
           {/*{JSON.stringify(props.main.fields, null, 2)}*/}
         {/*</pre>*/}
+        <Alert style={{ marginTop: '24px'}} message="支出:￥5000;收入:￥30000;借出:￥8000;借入:￥2800，家庭财政情况:优良" type="info" />
         <Table loading={tableDataLoading} rowKey={record => record.id} bordered  size="small" dataSource={props.main.dataList} pagination ={props.main.pagination} columns={columns} onChange={handleChange} />
       </div>
     </div>

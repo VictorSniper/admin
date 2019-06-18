@@ -18,6 +18,7 @@ var data = Mock.mock({
         "借出",
         "借入",
 ],
+    'itemCategory':"@ctitle",
     'name':'@cname',
     "datetime|1":'@datetime',
     "money|1-30000": 30000,
@@ -33,7 +34,7 @@ var banner = Mock.mock({
   'list|30-100': [{
     'id|+1': 1,
     "name":"@ctitle",
-    "img":Random.image('200x100', '#FF6600'),
+    "img":Random.image('64x64', '#FF6600'),
   }]
 })
 
@@ -89,5 +90,12 @@ export default {
     })
   },
   // 支持自定义函数，API 参考 express@4
-  'POST /api/users/create': (req, res) => { res.end('OK'); },
+  [`POST /api/create`]: (req, res) => {
+    res.status(200).json({
+      data:{
+        s:"成功"
+      },
+
+    })
+  },
 };

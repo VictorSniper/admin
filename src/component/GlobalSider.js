@@ -39,6 +39,7 @@ function GlobalSider(props) {
   const menuItems = getMenus(menuTree);
   const active = window.sessionStorage.getItem('navOpenKeys');
   const sub = window.sessionStorage.getItem('sub');
+  console.log(props)
   return (
     <Sider width={200} style={{ background: '#fff' }}>
       <Menu

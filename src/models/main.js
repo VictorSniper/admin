@@ -1,4 +1,4 @@
-import {query} from '../services';
+import {query,create} from '../services';
 import lodash from 'lodash';
 import moment from 'moment';
 import {queryURL} from '../utils';
@@ -25,6 +25,15 @@ export default {
       category: {},
       rangePicker: {},
     },
+    confirmLoading:false,
+    visible: false,
+    formsConfig:[
+      {name:"keywords",label:"项目名称",placeholder:"请填写项目名称",required:false,type:"text",category:"Input",keywords:null},
+      {name:"category",label:"收支类型",placeholder:"请选择收支类型",required:false,type:"text",category:"Select",keywords:null},
+      {name:"date",label:"日期",placeholder:"日期不能为空",required:false,type:"array",category:"DatePicker",keywords:null},
+      {name:"number",label:"数量",placeholder:"请输入项目名称",required:false,type:"number",category:"InputNumber",keywords:null},
+      {name:"remarks",label:"备注",placeholder:"请填写备注",required:false,type:"text",category:"Input",keywords:null},
+    ],
   },
   effects: {
     *query({ payload }, { select, call, put }) {
@@ -37,7 +46,6 @@ export default {
             endData:payload.value.endData,
           }
       const { data } = yield call(query,params);
-
       if (data) {
         yield put({
           type: 'updateState',
@@ -49,7 +57,23 @@ export default {
           }
         });
       }
-
+    },
+    *create({ payload },{select, call, put}){
+      yield put({
+        type: 'updateCreateState',
+        payload: {
+          visible: true,
+          confirmLoading:true,
+        }
+      });
+      const  {data}=yield call(create,{id:1});
+      yield put({
+        type: 'updateCreateState',
+        payload: {
+          visible: false,
+          confirmLoading:false,
+        }
+      });
     },
   },
   subscriptions: {
@@ -93,8 +117,13 @@ export default {
     },
   },
   reducers: {
+    updateCreateState(state, { payload }){
+      return {
+        ...state,
+        ...payload,
+      }
+    },
     updateState (state, { payload }) {
-
       return {
         ...state,
         ...payload,

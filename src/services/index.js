@@ -5,3 +5,11 @@ export async function query(params) {
     params:params
   });
 }
+export async function create(params) {
+
+  return axios({
+    method: 'post',
+    url: 'api/create',
+    data: params
+  });
+}

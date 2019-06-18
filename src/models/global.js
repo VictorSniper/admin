@@ -3,19 +3,35 @@ export default {
   state: {
     menu: [
       {
-        id: '1',
+        id: '2',
         bpid: '1',
         icon: 'dashboard',
-        name: '文章管理',
+        name: '数据管理',
 
       },
       {
-        id: '22',
+        id: '1',
+        bpid: '1',
+        icon: 'dashboard',
+        name: '收支管理',
+
+      },
+
+      {
+        id: '33',
         bpid: '1',
         mpid: '1',
-        name: '文章列表',
+        name: '收支列表',
         icon: 'heart-o',
         route: '/articles',
+      },
+      {
+        id: '22',
+        bpid: '2',
+        mpid: '2',
+        name: '数据分析',
+        icon: 'heart-o',
+        route: '/analysis',
       },
       {
         id: '4',
@@ -92,7 +108,7 @@ export default {
         columnNumber:10,
       }
     ],
-    defaultOpenKeys:'1',
+    defaultOpenKeys:'22',
     defaultSelectedKeys:'1',
   },
   subscriptions: {
